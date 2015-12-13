@@ -21,4 +21,18 @@ feature '"Rock", "Paper" and "Scissors"' do
     click_button 'ROCK'
     expect(page).to have_content 'Your shape is ROCK'
   end
+
+  # game chooses an options
+  scenario 'Opposition chooses shape "ROCK"' do
+    click_button 'ROCK'
+    message = find(:css, "#opponent").text # capybara method to retrieve an element in this case #opponent
+    expect(opposition_message).to include message
+  end
+
+  def opposition_message
+    [:rock, :paper, :scissors].map { |shape| "Opposition shape is #{shape.upcase}" }
+  end
 end
+
+
+
