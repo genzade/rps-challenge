@@ -10,10 +10,15 @@ feature '"Rock", "Paper" and "Scissors"' do
   end
 
   # see ROCK, PAPER, SCISSORS option
-  
   scenario 'see shape options' do
-    expect(page).to have_content 'ROCK'
-    expect(page).to have_content 'PAPER'
-    expect(page).to have_content 'SCISSORS'
+    expect(page).to have_button 'ROCK'
+    expect(page).to have_button 'PAPER'
+    expect(page).to have_button 'SCISSORS'
+  end
+
+  # choose one of these options
+  scenario 'choose shape option' do
+    click_button 'ROCK'
+    expect(page).to have_content 'Your shape is ROCK'
   end
 end

@@ -4,7 +4,13 @@
 <div>
  <h2>Choose your shape <%= @name %></h2>
 </div>
+<div>
+  <form method="post" action="/play">
+  <input type="submit" name="shape" value="ROCK">
+  <input type="submit" name="shape" value="PAPER">
+  <input type="submit" name="shape" value="SCISSORS">
+</div>
 
-ROCK
-PAPER
-SCISSORS
+<div>
+  <h2>Your shape is <%= @shape %></h2>
+</div>
