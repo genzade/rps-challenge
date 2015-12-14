@@ -9,22 +9,26 @@
   <input type="submit" name="shape" value="ROCK">
   <input type="submit" name="shape" value="PAPER">
   <input type="submit" name="shape" value="SCISSORS">
+  <input type="submit" name="shape" value="LIZARD">
+  <input type="submit" name="shape" value="SPOCK">
 </div>
 
-<div>
-  <h2>Your shape is <%= @turn.shape.to_s.upcase %></h2>
-</div>
-<div id="opponent">
-  Opposition shape is <%= @turn.opposition_shape.to_s.upcase %>
-</div>
-<div>
-  <% if @turn.winner? %>
-   You win!
-  <% elsif @turn.draw? %>
-   draw!
-  <% elsif @turn.lose? %>
-   You lose!
-  <% end %>
-</div>
+<% if @turn.shape %>
+  <div>
+    <h2>Your shape is <%= @turn.shape.to_s.upcase %></h2>
+  </div>
+  <div id="opponent">
+    Opposition shape is <%= @turn.opposition_shape.to_s.upcase %>
+  </div>
+  <div>
+    <% if @turn.winner? %>
+     You win!
+    <% elsif @turn.draw? %>
+     draw!
+    <% elsif @turn.lose? %>
+     You lose!
+    <% end %>
+  </div>
+<% end %>
 
 

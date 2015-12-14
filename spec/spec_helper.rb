@@ -1,5 +1,6 @@
 require 'coveralls'
 require 'simplecov'
+require 'web_helper'
 
 SimpleCov.formatters = [
   SimpleCov::Formatter::HTMLFormatter,

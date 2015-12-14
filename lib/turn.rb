@@ -1,8 +1,10 @@
 class Turn
   RPS_RULES = {
-    rock: {rock: :draw, paper: :lose, scissors: :win},
-    paper: {paper: :draw, scissors: :lose, rock: :win},
-    scissors: {scissors: :draw, rock: :lose, paper: :win}
+    rock:     {rock: :draw, paper: :lose, scissors: :win, lizard: :win, spock: :lose},
+    paper:    {rock: :win, paper: :draw, scissors: :lose, lizard: :win, spock: :lose},
+    scissors: {rock: :lose, paper: :win, scissors: :draw, lizard: :win, spock: :lose},
+    lizard:   {rock: :lose, paper: :win, scissors: :lose, lizard: :draw, spock: :win},
+    spock:    {rock: :win, paper: :lose, scissors: :win, lizard: :lose, spock: :draw}
   }
 
   attr_reader :name, :shape, :opposition_shape
@@ -20,7 +22,7 @@ class Turn
   def draw?
     outcome == :draw
   end
-  
+
   def lose?
     outcome == :lose
   end

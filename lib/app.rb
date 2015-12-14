@@ -1,4 +1,6 @@
 require 'sinatra/base'
+require_relative 'turn'
+require_relative 'opponent'
 
 class RPS < Sinatra::Base
   enable :sessions
