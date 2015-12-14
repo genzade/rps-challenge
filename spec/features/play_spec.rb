@@ -32,6 +32,30 @@ RAND_SEED = 216239
     expect(page).to have_content 'Opposition shape is PAPER'
   end
 
+  context 'game over' do
+    before do
+      srand(RAND_SEED)
+    end
+    
+    # declare winner
+    scenario '...and the winner is...' do
+      click_button 'SCISSORS'
+      expect(page).to have_content 'You win!'
+    end
+
+    # declare draw
+    scenario 'it is a draw' do
+      click_button 'PAPER'
+      expect(page).to have_content 'draw!'
+    end
+
+    # declare defeat
+    scenario 'you lose' do
+      click_button 'ROCK'
+      expect(page).to have_content 'You lose!'
+    end
+  end
+
   def opposition_message
     [:rock, :paper, :scissors].map { |shape| "Opposition shape is #{shape.upcase}" }
   end

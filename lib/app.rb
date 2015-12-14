@@ -13,16 +13,13 @@ class RPS < Sinatra::Base
   end
 
   get '/play' do
-    @name = session[:name]
-    @shape = session[:shape]
-    @opposition = session[:opposition]
+    @turn = Turn.new(session)
     erb(:play)
   end
 
   post '/play' do
-    @turn = Turn.new(session)
-    session[:shape] = params[:shape]
-    session[:opposition] = Opponent.new.shape
+    session[:shape] = params[:shape].downcase.to_sym
+    session[:opposition_shape] = Opponent.new.shape
     redirect '/play'
   end
 
