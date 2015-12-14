@@ -3,6 +3,8 @@
 # I would like to be able to play rock/paper/scissors
 
 feature '"Rock", "Paper" and "Scissors"' do
+RAND_SEED = 216239
+
   before do
     visit '/'
     fill_in 'name', with: 'Ham'
@@ -23,10 +25,11 @@ feature '"Rock", "Paper" and "Scissors"' do
   end
 
   # game chooses an options
-  scenario 'Opposition chooses shape "ROCK"' do
+  scenario 'Opposition chooses random shape' do
+    srand(RAND_SEED)
     click_button 'ROCK'
     message = find(:css, "#opponent").text # capybara method to retrieve an element in this case #opponent
-    expect(opposition_message).to include message
+    expect(page).to have_content 'Opposition shape is PAPER'
   end
 
   def opposition_message
